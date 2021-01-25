@@ -73,7 +73,7 @@ alpha = 0.1
 start = time.time()
 
 sample_sizes = ray.get([simulate_audits.remote(seed, reps, margin, N, alpha, progressbar) for seed in seeds])
-progressbar.close()
+#progressbar.close()
 print(len(sample_sizes))
 print(len(sample_sizes[0]))
 

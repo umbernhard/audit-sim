@@ -55,6 +55,6 @@ setup(
     python_requires=">=3.8",
     install_requires=[
         "numpy",
-        "tqdm==4.47.0",
+        "tqdm==4.56.0",
     ],
 )

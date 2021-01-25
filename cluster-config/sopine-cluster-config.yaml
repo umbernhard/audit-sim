@@ -51,4 +51,10 @@ auth:
     # Optional if an ssh private key is necessary to ssh to the cluster.
     ssh_private_key: ~/.ssh/id_ed25519
 
+# List of shell commands to run to set up nodes.
+setup_commands:
+    # this command does everything from scratch
+    # - sudo -H ubuntu-setup.sh
+
+    -  sudo python3 -m pip install -e 'git+https://github.com/umbernhard/audit-sim#egg=audit-sim'
 

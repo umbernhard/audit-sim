@@ -58,11 +58,11 @@ def simulate_audits(seed, reps, margin, N, alpha, progressbar):
     """
     prng = np.random.RandomState(seed)
     indices = []
-    progressbar_actor = progressbar.actor
     for i in range(reps):
       x = (prng.random(size=N) <= 1/2 + margin/2)
       indices.append(get_kk_estimate(x, margin, N, alpha))
-      progressbar_actor.update_completed.remote("Reps", 1)
+      progressbar.actor.update_completed.remote("Reps", 1)
+      progressbar.print_update()
 
     return indices
 

@@ -56,6 +56,5 @@ setup(
     install_requires=[
         "numpy",
         "tqdm",
-        "ray",
     ],
 )

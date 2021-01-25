@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: audit-sim
+Version: 0.0.1
+Summary: Simulate lots of post-election audits
+Home-page: https://github.com/umbernhard/audit-sim
+Author: Matt Bernhard
+Author-email: umbernhard@gmail.com
+License: GNU Affero General Public License v3
+Project-URL: Changelog, https://github.com/umbernhard/audit-sim/blob/main/CHANGELOG.rst
+Project-URL: Issue Tracker, https://github.com/umbernhard/audit-sim/issues
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3
+Classifier: Operating System :: Unix
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Topic :: Utilities
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown

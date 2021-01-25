@@ -1,7 +1,0 @@
-setup.py
-ray_progress/__init__.py
-ray_progress/ray_progress.py
-ray_testing.egg-info/PKG-INFO
-ray_testing.egg-info/SOURCES.txt
-ray_testing.egg-info/dependency_links.txt
-ray_testing.egg-info/top_level.txt

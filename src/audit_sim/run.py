@@ -13,8 +13,8 @@ from audit_sim.ray_progress import ProgressBar
 
 ray.init(address="auto")
 margin = .2
-N = 10**4
-reps =  3*10**2
+N = 10**6
+reps =  int(5.8*10**6)
 num_workers = int(ray.cluster_resources()['CPU'])
 print("Found {} workers".format(num_workers))
 reps_per_worker = reps/num_workers
@@ -27,6 +27,7 @@ progressbar = (
         }
     )
 )
+progressbar_actor = progressbar.actor
 
 
 def get_kk_estimate(x, margin, N, alpha):
@@ -51,7 +52,7 @@ def get_kk_estimate(x, margin, N, alpha):
 
 
 @ray.remote
-def simulate_audits(seed, reps, margin, N, alpha, progressbar):
+def simulate_audits(seed, reps, margin, N, alpha, progressbar_actor):
     """
     A function that simulates various audits of <reps> elections with margin
     <margin> and <N> total ballots.
@@ -61,8 +62,7 @@ def simulate_audits(seed, reps, margin, N, alpha, progressbar):
     for i in range(reps):
       x = (prng.random(size=N) <= 1/2 + margin/2)
       indices.append(get_kk_estimate(x, margin, N, alpha))
-      progressbar.actor.update_completed.remote("Reps", 1)
-      progressbar.print_update()
+      progressbar_actor.update_completed.remote("Reps", 1)
 
     return indices
 
@@ -72,8 +72,11 @@ seeds = [prng.randint(2**32 - 1) for i in range(num_workers)]
 alpha = 0.1
 start = time.time()
 
-sample_sizes = ray.get([simulate_audits.remote(seed, reps, margin, N, alpha, progressbar) for seed in seeds])
-#progressbar.close()
+sample_sizes_future = [simulate_audits.remote(seed, reps, margin, N, alpha, progressbar_actor) for seed in seeds]
+progressbar.print_until_done()
+progressbar.close()
+print("processed")
+sample_sizes = ray.get(sample_sizes_future)
 print(len(sample_sizes))
 print(len(sample_sizes[0]))
 

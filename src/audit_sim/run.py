@@ -1,3 +1,4 @@
+# Code borrowed from Dan wallach's arlo-e2e package
 from __future__ import division, print_function
 import math
 import numpy as np

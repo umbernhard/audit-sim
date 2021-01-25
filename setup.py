@@ -54,8 +54,8 @@ setup(
     project_urls=PROJECT_URLS,
     python_requires=">=3.8",
     install_requires=[
-        "numpy==1.19.4",
-        "tqdm==4.47.0",
-        "ray==1.1.0",
+        "numpy",
+        "tqdm",
+        "ray",
     ],
 )
